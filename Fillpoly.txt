@@ -35,8 +35,7 @@ func Polly():
 		queue_redraw()
 		CanDraw = false
 	pass
-#tá vendo essa area azul? ela tá demarcando ond3e ue posso desenhar e onde eu n posso
-#só q n tem um quadrado falando q pd desenhar ali
+
 func _draw() -> void:
 	# Desenhar as arestas e círculos do polígono em criação
 	for i in range(len(VetPoint) - 1):
