@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhbse76t26h7i"]
+
+[ext_resource type="Script" path="res://fillpoly.gd" id="1_bk7vd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tu65o"]
+size = Vector2(1735.75, 1293.25)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ehhc4"]
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_hbkva"]
+font_size = 26
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_bk7vd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="AreaDesenho" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDesenho"]
+position = Vector2(-281.875, -1.625)
+shape = SubResource("RectangleShape2D_tu65o")
+
+[node name="Interface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CorArestas" type="ColorPicker" parent="Interface"]
+layout_mode = 0
+offset_left = 591.0
+offset_top = 366.0
+offset_right = 855.0
+offset_bottom = 638.0
+edit_alpha = false
+picker_shape = 1
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="CorFillpoly" type="ColorPicker" parent="Interface"]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 366.0
+offset_right = 1154.0
+offset_bottom = 638.0
+edit_alpha = false
+picker_shape = 1
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="ExcluirPoligono" type="Button" parent="Interface"]
+layout_mode = 0
+offset_left = 591.0
+offset_top = -185.0
+offset_right = 1151.0
+offset_bottom = -77.0
+text = "Excluir Polígono
+"
+
+[node name="LimparTela" type="Button" parent="Interface"]
+layout_mode = 0
+offset_left = 591.0
+offset_top = -34.0
+offset_right = 1151.0
+offset_bottom = 86.0
+text = "Reiniciar
+"
+
+[node name="FillPoly" type="Button" parent="Interface"]
+layout_mode = 0
+offset_left = 595.0
+offset_top = -349.0
+offset_right = 1155.0
+offset_bottom = -241.0
+text = "FillPoly
+"
+
+[node name="Salvar" type="Button" parent="Interface"]
+layout_mode = 0
+offset_left = 591.0
+offset_top = -504.0
+offset_right = 1151.0
+offset_bottom = -406.0
+text = "Salvar Polígono
+"
+
+[node name="NovoPoligono" type="Button" parent="Interface"]
+layout_mode = 0
+offset_left = 591.0
+offset_top = -648.0
+offset_right = 1151.0
+offset_bottom = -553.0
+mouse_default_cursor_shape = 2
+text = "Criar Novo Polígono
+"
+
+[node name="PoligonoSalvo" type="OptionButton" parent="Interface"]
+layout_mode = 0
+offset_left = 591.0
+offset_top = 154.0
+offset_right = 1151.0
+offset_bottom = 274.0
+
+[node name="NomePreenchimento" type="Label" parent="Interface"]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 274.0
+offset_right = 1134.0
+offset_bottom = 370.0
+text = "Cor Preenchimento
+"
+label_settings = SubResource("LabelSettings_ehhc4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Interface"]
+layout_mode = 0
+offset_left = 591.0
+offset_top = 274.0
+offset_right = 851.0
+offset_bottom = 360.0
+text = "Cor Aresta
+"
+label_settings = SubResource("LabelSettings_hbkva")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="AreaDesenho" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="AreaDesenho" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="color_changed" from="Interface/CorArestas" to="." method="_on_cor_arestas_color_changed"]
+[connection signal="color_changed" from="Interface/CorFillpoly" to="." method="_on_cor_fillpoly_color_changed"]
+[connection signal="pressed" from="Interface/ExcluirPoligono" to="." method="_on_excluir_poligono_pressed"]
+[connection signal="pressed" from="Interface/LimparTela" to="." method="_on_limpar_tela_pressed"]
+[connection signal="pressed" from="Interface/FillPoly" to="." method="_on_fill_poly_pressed"]
+[connection signal="pressed" from="Interface/Salvar" to="." method="_on_salvar_pressed"]
+[connection signal="pressed" from="Interface/NovoPoligono" to="." method="_on_novo_poligono_pressed"]
